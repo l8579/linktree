@@ -7,8 +7,9 @@
           <div class="profile-header-info">
             <h3>{{ name }} <img src="../assets/checklist.png" alt="flag" class="flag" /></h3>
             <div class="profile-buttons">
-              <p class="follow-btn">follow</p>
-              <p class="contact-btn">work contact</p>
+              <a href="mailto:thanyanan.k8579@gmail.com" target="_blank" rel="noopener noreferrer">
+                <p class="contact-btn">work contact email</p>
+              </a>
             </div>
           </div>
           <div class="stats">
@@ -156,6 +157,11 @@ export default {
   /* margin-bottom: 10px; */
 }
 
+.profile-buttons a {
+  color: #333;
+  text-decoration: none;
+}
+
 .profile-info h3 {
   display: flex;
   align-items: center;
@@ -244,21 +250,21 @@ export default {
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
-  justify-content: center; /* จัดตรงกลาง */
+  justify-content: center;
 }
 
 .image-item {
   width: calc(20% - 15px);
   box-sizing: border-box;
-  border: 1px solid #e0e0e0; /* กรอบรอบรูป */
-  border-radius: 10px; /* มุมโค้งมน */
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* เงา */
-  transition: transform 0.3s ease; /* เพิ่มแอนิเมชัน */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
 }
 
 .image-item:hover {
-  transform: translateY(-5px); /* ขยับขึ้นเมื่อ hover */
+  transform: translateY(-5px);
 }
 
 .image-item img {
@@ -269,10 +275,10 @@ export default {
 
 .image-title {
   text-align: center;
-  margin-top: 10px; /* เพิ่มช่องว่างด้านบน */
+  margin-top: 10px;
   font-weight: bold;
-  color: #333; /* สีข้อความ */
-  font-size: 1rem; /* ขนาดข้อความ */
+  color: #333;
+  font-size: 1rem;
   font-weight: lighter;
 }
 
