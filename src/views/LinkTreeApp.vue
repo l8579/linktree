@@ -1,86 +1,83 @@
 <template>
   <div class="profile-wrapper">
-    <div class="profile">
-      <div class="profile-header">
-        <img :src="avatar" alt="avatar" class="avatar" />
-        <div class="profile-info">
-          <div class="profile-header-info">
-            <h3>{{ name }} <img src="../assets/checklist.png" alt="flag" class="flag" /></h3>
-            <div class="profile-buttons">
-              <!-- <a href="mailto:thanyanan.k8579@gmail.com" target="_blank" rel="noopener noreferrer">
-                <p class="contact-btn">work contact email</p>
-              </a> -->
+    <transition name="fade">
+      <div class="profile" v-if="loaded">
+        <div class="profile-header">
+          <img :src="avatar" alt="avatar" class="avatar" />
+          <div class="profile-info">
+            <div class="profile-header-info">
+              <h3>{{ name }} <img src="../assets/checklist.png" alt="flag" class="flag" /></h3>
+              <div class="profile-buttons"></div>
             </div>
-          </div>
-          <div class="stats">
-            <span>{{ posts }} posts</span>
-            <span>{{ followers }} followers</span>
-            <span>{{ favorites }} favorites</span>
-          </div>
-          <p>พิกัดรวมสินค้าและของใช้ทั้งหมด ✨</p>
-          <div class="social-section">
-            <div class="social-links">
-              <div v-for="link in socialLinks" :key="link.name" class="social-link">
-                <a :href="link.link" target="_blank" rel="noopener noreferrer">
-                  <img :src="require(`@/assets/${link.icon}`)" :alt="link.name" />
+            <div class="stats">
+              <span>{{ animatedPosts }} posts</span>
+              <span>{{ animatedFollowers }} followers</span>
+              <span>{{ animatedFavorites }} favorites</span>
+            </div>
+            <p>พิกัดรวมสินค้าและของใช้ทั้งหมด ✨</p>
+            <div class="social-section">
+              <div class="social-links">
+                <div v-for="link in socialLinks" :key="link.name" class="social-link">
+                  <a :href="link.link" target="_blank" rel="noopener noreferrer">
+                    <img :src="require(`@/assets/${link.icon}`)" :alt="link.name" />
+                  </a>
+                </div>
+                <a href="mailto:thanyanan.k8579@gmail.com" target="_blank" rel="noopener noreferrer" class="aZzz">
+                  <p class="contact-btn">work contact email</p>
                 </a>
-                <!-- <span>{{ link.name }}</span> -->
               </div>
-              <a href="mailto:thanyanan.k8579@gmail.com" target="_blank" rel="noopener noreferrer" class="aZzz">
-                <p class="contact-btn">work contact email</p>
-              </a>
+            </div>
+          </div>
+        </div>
+        <div class="tabs">
+          <div v-for="tab in tabs" :key="tab" :class="['tab', { active: activeTab === tab }]" @click="activeTab = tab">
+            {{ tab }}
+          </div>
+        </div>
+        <div class="tab-content">
+          <div v-if="activeTab === 'สกินแคร์'">
+            <div class="image-grid">
+              <div v-for="image in images1" :key="image.src" class="image-item">
+                <a :href="image.link" target="_blank">
+                  <img :src="require(`@/assets/${image.src}`)" :alt="image.title" />
+                  <div class="image-title">{{ image.title }}</div>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div v-if="activeTab === 'อาหารเสริม'">
+            <div class="image-grid">
+              <div v-for="image in images2" :key="image.src" class="image-item">
+                <a :href="image.link" target="_blank">
+                  <img :src="require(`@/assets/${image.src}`)" :alt="image.title" />
+                  <div class="image-title">{{ image.title }}</div>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div v-if="activeTab === 'ของกินอร่อยๆ'">
+            <div class="image-grid">
+              <div v-for="image in images3" :key="image.src" class="image-item">
+                <a :href="image.link" target="_blank">
+                  <img :src="require(`@/assets/${image.src}`)" :alt="image.title" />
+                  <div class="image-title">{{ image.title }}</div>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div v-if="activeTab === 'ของใช้ เสื้อผ้า ฯลฯ'">
+            <div class="image-grid">
+              <div v-for="image in images4" :key="image.src" class="image-item">
+                <a :href="image.link" target="_blank">
+                  <img :src="require(`@/assets/${image.src}`)" :alt="image.title" />
+                  <div class="image-title">{{ image.title }}</div>
+                </a>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="tabs">
-        <div v-for="tab in tabs" :key="tab" :class="['tab', { active: activeTab === tab }]" @click="activeTab = tab">
-          {{ tab }}
-        </div>
-      </div>
-      <div class="tab-content">
-        <div v-if="activeTab === 'สกินแคร์'">
-          <div class="image-grid">
-            <div v-for="image in images1" :key="image.src" class="image-item">
-              <a :href="image.link" target="_blank">
-                <img :src="require(`@/assets/${image.src}`)" :alt="image.title" />
-                <div class="image-title">{{ image.title }}</div>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div v-if="activeTab === 'อาหารเสริม'">
-          <div class="image-grid">
-            <div v-for="image in images2" :key="image.src" class="image-item">
-              <a :href="image.link" target="_blank">
-                <img :src="require(`@/assets/${image.src}`)" :alt="image.title" />
-                <div class="image-title">{{ image.title }}</div>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div v-if="activeTab === 'ของกินอร่อยๆ'">
-          <div class="image-grid">
-            <div v-for="image in images3" :key="image.src" class="image-item">
-              <a :href="image.link" target="_blank">
-                <img :src="require(`@/assets/${image.src}`)" :alt="image.title" />
-                <div class="image-title">{{ image.title }}</div>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div v-if="activeTab === 'ของใช้ เสื้อผ้า ฯลฯ'">
-          <div class="image-grid">
-            <div v-for="image in images4" :key="image.src" class="image-item">
-              <a :href="image.link" target="_blank">
-                <img :src="require(`@/assets/${image.src}`)" :alt="image.title" />
-                <div class="image-title">{{ image.title }}</div>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    </transition>
   </div>
 </template>
 
@@ -105,13 +102,49 @@ export default {
       images1: images1,
       images2: images2,
       images3: images3,
-      images4: images4
+      images4: images4,
+      loaded: false,
+      animatedPosts: 0,
+      animatedFollowers: 0,
+      animatedFavorites: 0
     };
+  },
+  mounted() {
+    this.loaded = true;
+    this.animateNumber('animatedPosts', this.posts, 2000);
+    this.animateNumber('animatedFollowers', this.followers, 2000);
+    this.animateNumber('animatedFavorites', this.favorites, 2000);
+  },
+  methods: {
+    animateNumber(ref, value, duration) {
+      let start = 0;
+      let increment = value / (duration / 16); // 16 ms for each frame (60fps)
+      const animate = () => {
+        start += increment;
+        if (start >= value) {
+          this[ref] = value;
+        } else {
+          this[ref] = Math.floor(start);
+          requestAnimationFrame(animate);
+        }
+      };
+      animate();
+    }
   }
 };
 </script>
 
 <style>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
 .profile-wrapper {
   display: flex;
   width: 100%;
@@ -330,6 +363,7 @@ export default {
     font-size: 0.8rem;
     height: 30px;
   }
+
   .tab-content {
     padding: 10px 0;
   }
