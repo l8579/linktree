@@ -1,14 +1,17 @@
 [
     {
         "name": "instagram",
-        "icon": "instagram.png"
+        "icon": "instagram.png",
+        "link": "https://www.instagram.com/l_8579_/"
     },
     {
         "name": "tiktok",
-        "icon": "tik-tok.png"
+        "icon": "tik-tok.png",
+        "link": "https://www.tiktok.com/@papayasalmongg"
     },
     {
         "name": "lemon 8",
-        "icon": "Lemon8_icon.png"
+        "icon": "Lemon8_icon.png",
+        "link": "https://s.lemon8-app.com/al/wSkpkexrQR"
     }
 ]

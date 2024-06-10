@@ -7,9 +7,9 @@
           <div class="profile-header-info">
             <h3>{{ name }} <img src="../assets/checklist.png" alt="flag" class="flag" /></h3>
             <div class="profile-buttons">
-              <a href="mailto:thanyanan.k8579@gmail.com" target="_blank" rel="noopener noreferrer">
+              <!-- <a href="mailto:thanyanan.k8579@gmail.com" target="_blank" rel="noopener noreferrer">
                 <p class="contact-btn">work contact email</p>
-              </a>
+              </a> -->
             </div>
           </div>
           <div class="stats">
@@ -21,9 +21,14 @@
           <div class="social-section">
             <div class="social-links">
               <div v-for="link in socialLinks" :key="link.name" class="social-link">
-                <img :src="require(`@/assets/${link.icon}`)" :alt="link.name" />
+                <a :href="link.link" target="_blank" rel="noopener noreferrer">
+                  <img :src="require(`@/assets/${link.icon}`)" :alt="link.name" />
+                </a>
                 <!-- <span>{{ link.name }}</span> -->
               </div>
+              <a href="mailto:thanyanan.k8579@gmail.com" target="_blank" rel="noopener noreferrer" class="aZzz">
+                <p class="contact-btn">work contact email</p>
+              </a>
             </div>
           </div>
         </div>
@@ -64,7 +69,7 @@
             </div>
           </div>
         </div>
-        <div v-if="activeTab === 'ของใช้ ฯลฯ'">
+        <div v-if="activeTab === 'ของใช้ เสื้อผ้า ฯลฯ'">
           <div class="image-grid">
             <div v-for="image in images4" :key="image.src" class="image-item">
               <a :href="image.link" target="_blank">
@@ -95,7 +100,7 @@ export default {
       favorites: 200,
       avatar: require('@/assets/avatar.jpg'),
       socialLinks: socialLinks,
-      tabs: ["สกินแคร์", "อาหารเสริม", "ของกินอร่อยๆ", "ของใช้ ฯลฯ"],
+      tabs: ["สกินแคร์", "อาหารเสริม", "ของกินอร่อยๆ", "ของใช้ เสื้อผ้า ฯลฯ"],
       activeTab: "สกินแคร์",
       images1: images1,
       images2: images2,
@@ -148,7 +153,7 @@ export default {
 .profile-header-info {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
 }
 
 .profile-buttons {
@@ -157,9 +162,10 @@ export default {
   /* margin-bottom: 10px; */
 }
 
-.profile-buttons a {
+.profile-info .aZzz {
   color: #333;
   text-decoration: none;
+  margin-top: -5px;
 }
 
 .profile-info h3 {
@@ -250,7 +256,9 @@ export default {
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
-  justify-content: center;
+  justify-content: flex-start;
+  overflow-y: auto;
+  height: 550px;
 }
 
 .image-item {
@@ -290,4 +298,217 @@ export default {
 /* .image-item a:hover .image-title {
   color: #6a11cb;
 } */
+
+/* Media Queries */
+
+/* Mobile Devices */
+@media only screen and (max-width: 600px) {
+  .profile {
+    width: 90%;
+    height: auto;
+    margin: 20px auto;
+  }
+
+  .avatar {
+    display: none;
+  }
+
+  .profile-info {
+    margin-top: 0;
+    font-size: 0.8rem;
+  }
+
+  .image-grid {
+    height: 550px;
+  }
+
+  .image-item {
+    width: calc(50% - 15px);
+  }
+
+  .image-title {
+    font-size: 0.8rem;
+    height: 30px;
+  }
+  .tab-content {
+    padding: 10px 0;
+  }
+
+  .tabs {
+    font-size: 0.5rem;
+  }
+
+  .tab {
+    padding: 10px 0;
+  }
+}
+
+/* Tablets */
+@media only screen and (min-width: 600px) and (max-width: 768px) {
+  .profile {
+    width: 90%;
+    height: auto;
+    margin: 20px auto;
+  }
+
+  .avatar {
+    width: 120px;
+    height: 120px;
+    /* margin: 20px 0; */
+    margin: 40px 30px;
+  }
+
+  .image-item {
+    width: calc(33.33% - 15px);
+  }
+
+  .image-title {
+    height: 35px;
+  }
+
+  .image-grid {
+    height: 480px;
+  }
+}
+
+/* Small Desktops */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .profile {
+    width: 90%;
+    height: auto;
+    margin: 20px auto;
+  }
+
+  .avatar {
+    width: 120px;
+    height: 120px;
+    /* margin: 20px 0; */
+    margin: 40px 50px;
+  }
+
+  .image-item {
+    width: calc(33.33% - 15px);
+  }
+
+  .image-title {
+    height: 35px;
+  }
+
+  .image-grid {
+    height: 500px;
+  }
+}
+
+/* Medium Desktops */
+@media only screen and (min-width: 1024px) and (max-width: 1280px) {
+  .profile {
+    width: 80%;
+    height: auto;
+    margin: 20px auto;
+  }
+
+  .avatar {
+    width: 120px;
+    height: 120px;
+    /* margin: 20px 0; */
+    margin: 40px 50px;
+  }
+
+  .image-item {
+    width: calc(25% - 15px);
+  }
+
+  .image-title {
+    height: 40px;
+  }
+
+  .image-grid {
+    height: 500px;
+  }
+}
+
+/* Large Desktops */
+@media only screen and (min-width: 1281px) and (max-width: 2000px) {
+  .profile {
+    width: 50%;
+    height: auto;
+    margin: 20px auto;
+  }
+
+  .avatar {
+    width: 140px;
+    height: 140px;
+    margin: 30px 40px;
+    /* margin: 40px 50px; */
+  }
+
+  .profile-info {
+    margin-top: 10px;
+  }
+
+  .image-item {
+    width: calc(25% - 15px);
+  }
+
+  .image-grid {
+    height: 500px;
+  }
+
+  .image-title {
+    text-align: center;
+    margin-top: 10px;
+    color: #333;
+    height: 40px;
+    font-size: 1rem;
+    font-weight: lighter;
+  }
+}
+
+/* Large Desktops */
+@media only screen and (min-width: 2560px) {
+  .profile {
+    width: 50%;
+    height: auto;
+    margin: 20px auto;
+  }
+
+  .avatar {
+    width: 180px;
+    height: 180px;
+    margin: 40px 50px;
+    /* margin: 40px 50px; */
+  }
+
+  .profile-info {
+    margin-top: 10px;
+    font-size: 1.5rem;
+  }
+
+  .social-link img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .profile-info .aZzz {
+    margin-top: 0px;
+    margin-left: 5px;
+  }
+
+  .image-grid {
+    height: 950px;
+  }
+
+  .image-item {
+    width: calc(25% - 15px);
+  }
+
+  .image-title {
+    font-size: 1.8rem;
+    height: 60px;
+  }
+
+  .tabs {
+    font-size: 1.6rem;
+  }
+}
 </style>
