@@ -1,5 +1,8 @@
 <template>
-  <LinkTreeApp />
+  <div>
+    <LinkTreeApp />
+    <div class="WHS"></div>
+  </div>
 </template>
 
 <script>
@@ -14,9 +17,16 @@ export default {
 </script>
 
 <style>
-html,body {
+html,
+body {
   margin: 0;
   padding: 0;
   font-family: 'Kanit', sans-serif;
+}
+
+.WHS {
+  height: 50px;
+  width: 100%;
+  margin-top: 120px;
 }
 </style>

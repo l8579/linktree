@@ -149,16 +149,14 @@ export default {
   display: flex;
   width: 100%;
   height: 100vh;
-  background: linear-gradient(to right, #6a11cb 25%, #f7797d 75%);
+  background: white;
 }
 
 .profile {
   width: 50%;
-  height: 90vh;
-  margin: auto;
+  /* height: 90vh; */
   background: white;
   padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 15px;
 }
 
@@ -290,7 +288,7 @@ export default {
   flex-wrap: wrap;
   gap: 15px;
   justify-content: flex-start;
-  overflow-y: auto;
+  /* overflow-y: auto; */
   height: 550px;
 }
 
@@ -498,7 +496,7 @@ export default {
   }
 
   .image-grid {
-    height: 230px !important; 
+    height: 230px !important;
   }
 }
 
@@ -525,7 +523,7 @@ export default {
   }
 
   .image-grid {
-    height: 380px !important; 
+    height: 380px !important;
   }
 }
 
